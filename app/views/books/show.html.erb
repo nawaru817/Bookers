@@ -1,12 +1,18 @@
-<% if @succes == 1 then %>
-<p>Book was successfully created.</p>
-<% @succes = 0 %>
+<% if flash[:notice] %>
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+  <% elsif flash[:upd] %>
+  <div class="flash">
+  <%= flash[:upd] %>
+  </div>
 <% end %>
 
 <p><strong>Title: </strong><%= @book.title %></p>
 <p><strong>Body: </strong><%= @book.body %></p>
 
 <%= link_to "Edit", edit_book_path(@book) %>
+<%= "|" %>
 <%= link_to "Back", books_path %>
 
 
